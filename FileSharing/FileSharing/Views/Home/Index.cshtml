@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Обменивайтесь файлами</h1>
+    <br />
+    <div class="center-block">
+        @Html.ActionLink("Загрузить", "Load", "File", new { @class = "btn btn-primary btn-lg center-block",
+       @style = "width: 400px; border-radius: 25px; background-color: #2ea1a5" } )
+    </div>
+</div>
+
+<div class="row" style="background: url(../../Content/img/backGroundRow.png); border-radius:15px">
+    <h2 style="text-align:center">
+        Для загрузки файлов используйте наш сайт!
+    </h2>
+    <br />
+    <div class="col-md-4 text-center">
+        <img src="~/Content/img/userBlue.png" style="width: 155px"/>
+        <p>@Html.ActionLink("Зарегистрируйтесь", "Register", "Account", new { @class = "btn btn-primary"})</p>        
+    </div>
+    <div class="col-md-4 text-center">
+        <img src="~/Content/img/download-513.png" style="width: 155px" />
+        <p style="color:#fff">Загружайте и сохраняйте файлы</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <img src="~/Content/img/file-sharing-share-sharing-social-media-icon--28.png" style="width: 155px" />
+        <p style="color:#fff">Делитесь с друзьями</p>
+    </div>
+</div>

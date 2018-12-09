@@ -1,0 +1,9 @@
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.DAL.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.DAL.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\StructureMap.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\StructureMap.xml
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csprojAssemblyReference.cache
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csproj.CoreCompileInputs.cache
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csproj.CopyComplete
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.pdb
