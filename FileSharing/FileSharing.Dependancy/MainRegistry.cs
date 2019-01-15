@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FileSharing.DAL.Core;
+using FileSharing.Entities.Core;
+using FileSharing.Services;
 
 namespace FileSharing.Dependancy
 {
@@ -16,8 +17,8 @@ namespace FileSharing.Dependancy
             Scan(
                 scan => {
                     scan.WithDefaultConventions();
-                    scan.AssemblyContainingType<User>();
-                    //scan.AssemblyContainingType<DataAcces>();
+                    scan.AssemblyContainingType<BusinessLogic>();
+                    scan.AssemblyContainingType<DataAccess>();
                     scan.LookForRegistries();
                 });
 

@@ -1,14 +1,13 @@
 ﻿using FileSharing.DAL.Context;
-using FileSharing.DAL.Core;
 using FileSharing.DAL.Interfaces;
 using FileSharing.DAL.Models;
+using FileSharing.Entities.Core;
 using StructureMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IContext = FileSharing.DAL.Interfaces.IContext;
 
 namespace FileSharing.DAL
 {
@@ -16,18 +15,19 @@ namespace FileSharing.DAL
     {
         public DALRegistry()
         {
-            //Scan(
-            //    scan =>
-            //    {
-            //        scan.TheCallingAssembly();
-            //    });
-
-            For<IRepository<User>>().Use<UserRepository>();
-            For<IRepository<Role>>().Use<RoleRepository>();
-            For<IRepository<File>>().Use<FileRepository>();
+            For<IDataAccess>().Use<DataAccess>();
+            For<Interfaces.IContext>().Use<FileSharingContext>();
             For<IRepository<Category>>().Use<CategoryRepository>();
-            For<IContext>().Use<FileSharingContext>();
+            For<IRepository<File>>().Use<FileRepository>();
+            For<IRepository<UserRole>>().Use<UserRoleRepository>();
+            For<IRepository<User>>().Use<UserRepository>();
 
+            Forward<IDataAccess, DataAccess>();
+            Forward<Interfaces.IContext, FileSharingContext>();
+            Forward<IRepository<Category>, CategoryRepository>();
+            Forward<IRepository<File>, FileRepository>();
+            Forward<IRepository<UserRole>, UserRoleRepository>();
+            Forward<IRepository<User>, UserRepository>();
         }
     }
 }

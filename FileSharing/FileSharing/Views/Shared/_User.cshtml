@@ -1,0 +1,17 @@
+﻿<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+    <li>@Html.ActionLink("Загрузить", "Upload", "File")</li>
+    <li>@Html.ActionLink("Скачать", "Download", "File")</li>
+    <li>@Html.ActionLink("О сайте", "About", "Home")</li>
+    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+</ul>
+
+@using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+{
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Мой аккаунт", "AccountIndex", "Manage")</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+    </ul>
+}

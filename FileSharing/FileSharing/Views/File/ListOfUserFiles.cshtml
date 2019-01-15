@@ -1,0 +1,98 @@
+﻿@model IEnumerable<FileSharing.Entities.Core.File>
+
+@{
+    ViewBag.Title = "Список файлов пользователя";
+}
+
+<h2>Список файлов пользователя.</h2>
+
+<div class="container body-content">
+
+    <h2>Все файлы.</h2>
+
+    <table class="table table-bordered table-hover" style="margin-top: 20px;">
+        <tr>
+            <th>
+                @Html.DisplayName("Имя файла")
+            </th>
+            <th>
+                @Html.DisplayName("Размер файла")
+            </th>
+            <th>
+                @Html.DisplayName("Описание файла")
+            </th>
+            <th>
+                @Html.DisplayName("Дата загрузки")
+            </th>
+            <th>
+                @Html.DisplayName("Ссылка на скачивание")
+            </th>
+            @if (Request.Cookies["Id"] != null)
+            {
+                <th>
+                    @Html.DisplayName("Общедоступный")
+                </th>
+                <th>
+                    @Html.DisplayName("Изменить файл")
+                </th>
+                <th>
+                    @Html.DisplayName("Удалить файл")
+                </th>
+            }
+        </tr>
+
+        <tbody id="table">
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="4" style="color: red;" class="to-centre">
+                        Файлов не найдено.
+                    </td>
+                </tr>
+            }
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DownloadDate)
+                    </td>
+
+                    <td class="to-centre">
+                        <a href="~/File/Download/@item.Id">Скачать</a>
+                    </td>
+
+
+                    @if (Request.Cookies["Id"] != null)
+                    {
+                        if (Request.Cookies["Admin"] != null || Request.Cookies["Moder"] != null || Request.Cookies["Id"].Value == (item.UserId).ToString())
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Public)
+                            </td>
+                            <td>
+                                <a href="~/File/EditFile/@item.Id">Изменить</a>
+                            </td>
+                            <td>
+                                <a href="~/File/DeleteFile/@item.Id">Удалить</a>
+                            </td>
+                        }
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

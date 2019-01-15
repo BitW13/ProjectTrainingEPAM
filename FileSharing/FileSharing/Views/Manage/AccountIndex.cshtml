@@ -1,0 +1,72 @@
+﻿@model FileSharing.Entities.Models.AccountIndexViewModel
+
+@{
+    ViewBag.Title = "Мой аккаунт";
+}
+
+<div class="container body-content">
+    <div>
+        <h2>Сведения о пользователе.</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+
+            <hr />
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <hr />
+
+        </dl>
+    </div>
+
+    <p>
+        @Html.ActionLink("Просмотреть историю загрузок", "ListOfUserFiles", "File", new { @id = Model.Id }, new { @class = "btn btn-primary" })
+    </p>
+    <hr />
+
+    @if (Request.Cookies["Admin"] != null || Request.Cookies["Id"].Value == (Model.Id).ToString())
+    {
+        <p>
+            @Html.ActionLink("На главную", "Index", "Home") |
+            <a href="~/Manage/EditUserData/@Model.Id">
+                Изменить личные данные
+            </a> |
+            <a href="~/Manage/EditUserPassword/@Model.Id">
+                Изменить пароль
+            </a> |
+            <a href="~/Manage/Delete/@Model.Id">
+                Удалить аккаунт
+            </a>
+        </p>
+    }
+
+
+    @if (Request.Cookies["Id"].Value == (Model.Id).ToString())
+    {
+        <p>
+            @if (Request.Cookies["Moder"] == null)
+            {
+                @Html.ActionLink("Получить права модератора", "GetModer", "Account")
+            }
+        </p>
+
+        <p>
+            @if (Request.Cookies["Admin"] == null)
+            {
+                @Html.ActionLink("Получить права администратора", "GetAdmin", "Account")
+            }
+        </p>
+    }
+
+</div>

@@ -35,6 +35,7 @@
       <HintPath>..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,21 +46,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\FileSharingContext.cs" />
-    <Compile Include="Core\Category.cs" />
-    <Compile Include="Core\File.cs" />
-    <Compile Include="Core\Role.cs" />
-    <Compile Include="Core\User.cs" />
     <Compile Include="DALRegistry.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Interfaces\IContext.cs" />
+    <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\CategoryRepository.cs" />
     <Compile Include="Models\FileRepository.cs" />
-    <Compile Include="Models\RoleRepository.cs" />
     <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="Models\UserRoleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileSharing.Entities\FileSharing.Entities.csproj">
+      <Project>{384A6B30-DB3C-480F-9670-AD627C42EE31}</Project>
+      <Name>FileSharing.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

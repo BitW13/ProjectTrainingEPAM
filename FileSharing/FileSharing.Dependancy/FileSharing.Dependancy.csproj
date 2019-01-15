@@ -67,9 +67,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileSharing.Business\FileSharing.Business.csproj">
+      <Project>{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}</Project>
+      <Name>FileSharing.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileSharing.DAL\FileSharing.DAL.csproj">
       <Project>{9D45D710-C370-4868-9BB7-97D794360C67}</Project>
       <Name>FileSharing.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileSharing.Entities\FileSharing.Entities.csproj">
+      <Project>{384A6B30-DB3C-480F-9670-AD627C42EE31}</Project>
+      <Name>FileSharing.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

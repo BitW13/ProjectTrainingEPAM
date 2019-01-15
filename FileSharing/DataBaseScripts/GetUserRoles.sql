@@ -1,0 +1,9 @@
+USE FileSharingDb;
+GO
+CREATE PROCEDURE [dbo].[GetUserRoles]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM dbo.UserRoles
+END
+GO

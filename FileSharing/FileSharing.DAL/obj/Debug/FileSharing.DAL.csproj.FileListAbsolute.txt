@@ -7,3 +7,7 @@ A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.cs
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csproj.CopyComplete
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.dll
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entities.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entities.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\log4net.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\log4net.xml

@@ -1,0 +1,9 @@
+USE FileSharingDb;
+GO
+CREATE PROCEDURE [dbo].[GetUsers]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM dbo.Users
+END
+GO

@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<FileSharing.Entities.Models.IndexUserViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<div class="container body-content">
+    <h2>Список пользователей</h2>
+
+    @using (Html.BeginForm("ListOfUsers", "Manage", FormMethod.Get, htmlAttributes: new { @id = "myForm" }))
+    {
+        <input type="text" name="login" form="myForm" class="search" placeholder="Введите логин пользователя" style="width: 450px" />
+        <input type="submit" value="Поиск" class="btn btn-info" />
+
+        <br />
+
+        <table class="table table-bordered table-hover" style="margin-top: 20px;">
+            <tr>
+                <th>
+                    @Html.DisplayName("Логин")
+                </th>
+                <th>
+                    @Html.DisplayName("Email")
+                </th>
+                <th>
+                    @Html.DisplayName("Роль")
+                </th>
+                <th>
+                    @Html.DisplayName("Изменить данные")
+                </th>
+                <th>
+                    @Html.DisplayName("Изменить пароль")
+                </th>
+                <th>
+                    @Html.DisplayName("Удалить")
+                </th>
+            </tr>
+
+            <tbody id="table">
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="4" style="color: red;" class="to-centre">
+                            Файлов не найдено.
+                        </td>
+                    </tr>
+                }
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="~/Manage/AccountIndex/@item.Id">
+                                @item.Login
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserRoleName)
+                        </td>
+                        <td>
+                            <a href="~/Manage/EditUserData/@item.Id">
+                                Изменить
+                            </a>
+                        </td>
+                        <td>
+                            <a href="~/Manage/EditUserPassword/@item.Id">
+                                Изменить пароль
+                            </a>
+                        </td>
+                        <td>
+                            <a href="~/Manage/Delete/@item.Id">
+                                Удалить
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+        <div class="pagination">
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("ListOfUsers", new { page }))
+        </div>
+    }
+
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/AutoSearch.js"></script>
+}

@@ -1,0 +1,37 @@
+﻿<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+    <li>@Html.ActionLink("Загрузить", "Upload", "File")</li>
+    <li>@Html.ActionLink("Скачать", "Download", "File")</li>
+    <li>@Html.ActionLink("О сайте", "About", "Home")</li>
+    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+    <li class="nav-item dropdown">
+        <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdownMenuListLink" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">
+            Списки
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>@Html.ActionLink("Список файлов", "Index", "File")</li>
+            <li>@Html.ActionLink("Список категорий", "ListOfCategories", "Category")</li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="navbar-link dropdown-toggle" href="#" id="navbarDropdownMenuAddLink" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">
+            Добавить
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>@Html.ActionLink("Файл", "Upload", "File")</li>
+            <li>@Html.ActionLink("Категорию", "AddCategory", "Category")</li>
+        </ul>
+    </li>
+</ul>
+
+@using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+{
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Мой аккаунт", "AccountIndex", "Manage")</li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+    </ul>
+}

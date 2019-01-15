@@ -31,11 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,10 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Category.cs" />
+    <Compile Include="Core\File.cs" />
+    <Compile Include="Core\User.cs" />
+    <Compile Include="Core\UserRole.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Models\AccountIndexViewModel.cs" />
+    <Compile Include="Models\AddUserByAdminViewModel.cs" />
+    <Compile Include="Models\CreateUserViewModel.cs" />
+    <Compile Include="Models\DeleteUserViewModel.cs" />
+    <Compile Include="Models\EditFileViewModel.cs" />
+    <Compile Include="Models\EditUserPasswordViewModel.cs" />
+    <Compile Include="Models\EditUserViewModel.cs" />
+    <Compile Include="Models\GetRightsUserViewModel.cs" />
+    <Compile Include="Models\IndexFileViewModel.cs" />
+    <Compile Include="Models\IndexUserViewModel.cs" />
+    <Compile Include="Models\LoginUserViewModel.cs" />
+    <Compile Include="Models\UploadFileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logging\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

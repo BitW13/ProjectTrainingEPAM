@@ -27,6 +27,7 @@ namespace FileSharing.DependencyResolution {
             Scan(
                 scan => {
                     scan.TheCallingAssembly();
+                    scan.WithDefaultConventions();
                 });
         }
 

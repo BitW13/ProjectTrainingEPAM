@@ -19,3 +19,9 @@ A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\System.Web.
 A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\obj\Debug\FileSharing.Dependancy.csproj.CopyComplete
 A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\obj\Debug\FileSharing.Dependancy.dll
 A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\obj\Debug\FileSharing.Dependancy.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\FileSharing.Entities.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\FileSharing.Entities.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\FileSharing.Business.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\FileSharing.Business.pdb
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\log4net.dll
+A:\TutorialEPAM\Project\FileSharing\FileSharing.Dependancy\bin\Debug\log4net.xml

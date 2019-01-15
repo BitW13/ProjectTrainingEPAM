@@ -6,7 +6,7 @@
     <h1 class="text-center">Обменивайтесь файлами</h1>
     <br />
     <div class="center-block">
-        @Html.ActionLink("Загрузить", "Load", "File", new { @class = "btn btn-primary btn-lg center-block",
+        @Html.ActionLink("Загрузить", "Upload", "File", new { }, new { @class = "btn btn-primary btn-lg center-block",
        @style = "width: 400px; border-radius: 25px; background-color: #2ea1a5" } )
     </div>
 </div>
@@ -18,7 +18,7 @@
     <br />
     <div class="col-md-4 text-center">
         <img src="~/Content/img/userBlue.png" style="width: 155px"/>
-        <p>@Html.ActionLink("Зарегистрируйтесь", "Register", "Account", new { @class = "btn btn-primary"})</p>        
+        <p>@Html.ActionLink("Зарегистрируйтесь", "Register", "Account", new { }, new { @class = "btn btn-primary"})</p>        
     </div>
     <div class="col-md-4 text-center">
         <img src="~/Content/img/download-513.png" style="width: 155px" />

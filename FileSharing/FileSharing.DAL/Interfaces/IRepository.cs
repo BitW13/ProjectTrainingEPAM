@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Interfaces
 {
-    public interface IRepository<T>: IDisposable
+    public interface IRepository<T>
     {
         IEnumerable<T> GetAll();
 
-        T GetElementById(Guid? id);
+        T GetElementById(int? id);
 
         T GetElement(T item);
 
         void Create(T item);
 
-        void Delete(Guid? id);
+        void Delete(int? id);
 
         void Update(T item);
-
-        void Save();
     }
 }
