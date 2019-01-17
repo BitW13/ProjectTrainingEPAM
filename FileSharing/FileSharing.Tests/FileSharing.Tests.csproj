@@ -103,6 +103,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileSharing.Business\FileSharing.Business.csproj">
+      <Project>{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}</Project>
+      <Name>FileSharing.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileSharing\FileSharing.csproj">
       <Project>{B70DFB60-02AF-4A56-97DE-E816AD64D1FE}</Project>
       <Name>FileSharing</Name>
