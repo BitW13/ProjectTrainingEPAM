@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing", "FileSharing\FileSharing.csproj", "{B70DFB60-02AF-4A56-97DE-E816AD64D1FE}"
 	ProjectSection(ProjectDependencies) = postProject
-		{04105CD5-EC01-4A46-8BAF-095411B2276A} = {04105CD5-EC01-4A46-8BAF-095411B2276A}
+		{E22F3A4E-A088-421D-8946-50EBB9C066E0} = {E22F3A4E-A088-421D-8946-50EBB9C066E0}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.Tests", "FileSharing.Tests\FileSharing.Tests.csproj", "{51AB3BE0-9D60-4395-BD7B-3F355833A805}"
@@ -16,9 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.DAL", "FileShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.Entities", "FileSharing.Entities\FileSharing.Entities.csproj", "{384A6B30-DB3C-480F-9670-AD627C42EE31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF", "WCF\WCF.csproj", "{04105CD5-EC01-4A46-8BAF-095411B2276A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing.Business", "FileSharing.Business\FileSharing.Business.csproj", "{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvertisingWCF", "AdvertisingWCF\AdvertisingWCF.csproj", "{E22F3A4E-A088-421D-8946-50EBB9C066E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,14 +46,14 @@ Global
 		{384A6B30-DB3C-480F-9670-AD627C42EE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{384A6B30-DB3C-480F-9670-AD627C42EE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{384A6B30-DB3C-480F-9670-AD627C42EE31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04105CD5-EC01-4A46-8BAF-095411B2276A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04105CD5-EC01-4A46-8BAF-095411B2276A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04105CD5-EC01-4A46-8BAF-095411B2276A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04105CD5-EC01-4A46-8BAF-095411B2276A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7405ADC-7457-450B-81C0-D2B41CCBAF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E22F3A4E-A088-421D-8946-50EBB9C066E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E22F3A4E-A088-421D-8946-50EBB9C066E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E22F3A4E-A088-421D-8946-50EBB9C066E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E22F3A4E-A088-421D-8946-50EBB9C066E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6944c5e6-c778-4b0c-83a8-15a8fe21ae62" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61947/SpamService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SpamService.wsdl" MetadataType="Wsdl" ID="2ffee6ee-41fc-4c2f-b70c-c25c347047a8" SourceId="1" SourceUrl="http://localhost:61947/SpamService.svc?wsdl" />
+    <MetadataFile FileName="SpamService.xsd" MetadataType="Schema" ID="36befe3d-fc08-4a06-8b1b-a1e9c3bcb7f3" SourceId="1" SourceUrl="http://localhost:61947/SpamService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SpamService.disco" MetadataType="Disco" ID="1a328100-4031-4056-94d2-39828e4af0ba" SourceId="1" SourceUrl="http://localhost:61947/SpamService.svc?disco" />
+    <MetadataFile FileName="SpamService1.xsd" MetadataType="Schema" ID="500396a2-07e3-4496-b99f-c20ace7a5550" SourceId="1" SourceUrl="http://localhost:61947/SpamService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SpamService2.xsd" MetadataType="Schema" ID="c070b267-b598-495e-8268-4cb28ef5ca72" SourceId="1" SourceUrl="http://localhost:61947/SpamService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
