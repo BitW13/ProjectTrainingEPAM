@@ -3,15 +3,10 @@ using FileSharing.DAL.Interfaces;
 using FileSharing.DAL.Models;
 using FileSharing.Entities.Core;
 using StructureMap;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL
 {
-    public class DALRegistry:Registry
+    public class DALRegistry : Registry
     {
         public DALRegistry()
         {
@@ -21,6 +16,12 @@ namespace FileSharing.DAL
             For<IRepository<File>>().Use<FileRepository>();
             For<IRepository<UserRole>>().Use<UserRoleRepository>();
             For<IRepository<User>>().Use<UserRepository>();
+            For<IRepository<Benefits>>().Use<BenefitsRepository>();
+            For<IRepository<FileAccess>>().Use<FileAccessRepository>();
+            For<IRepository<FileUrl>>().Use<FileUrlRepository>();
+            For<IRepository<UserClaims>>().Use<UserClaimsRepository>();
+            For<IRepository<UserFriends>>().Use<UserFriendRepository>();
+            For<IRepository<UsersBenefits>>().Use<UserBenefitsRepository>();
 
             Forward<IDataAccess, DataAccess>();
             Forward<Interfaces.IContext, FileSharingContext>();
@@ -28,6 +29,12 @@ namespace FileSharing.DAL
             Forward<IRepository<File>, FileRepository>();
             Forward<IRepository<UserRole>, UserRoleRepository>();
             Forward<IRepository<User>, UserRepository>();
+            Forward<IRepository<Benefits>, BenefitsRepository>();
+            Forward<IRepository<FileAccess>, FileAccessRepository>();
+            Forward<IRepository<FileUrl>, FileUrlRepository>();
+            Forward<IRepository<UserClaims>, UserClaimsRepository>();
+            Forward<IRepository<UserFriends>, UserFriendRepository>();
+            Forward<IRepository<UsersBenefits>, UserBenefitsRepository>();
         }
     }
 }

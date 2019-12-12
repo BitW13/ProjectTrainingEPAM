@@ -1,20 +1,15 @@
-﻿using FileSharing.DAL.Context;
-using FileSharing.DAL.Interfaces;
+﻿using FileSharing.DAL.Interfaces;
 using FileSharing.Entities.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Models
 {
     public class UserRepository : IRepository<User>
     {
-        private IContext _context;
+        private readonly IContext _context;
 
         public UserRepository(IContext context)
         {
@@ -85,14 +80,14 @@ namespace FileSharing.DAL.Models
                 };
                 users.Add(user);
             }
-            if(users.Count != 0)
+            if (users.Count != 0)
             {
                 return users[0];
             }
             else
             {
                 return null;
-            }            
+            }
         }
 
         public User GetElementById(int? id)

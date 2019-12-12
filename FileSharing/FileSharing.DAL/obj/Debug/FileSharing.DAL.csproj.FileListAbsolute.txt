@@ -11,3 +11,16 @@ A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entiti
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entities.pdb
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\log4net.dll
 A:\TutorialEPAM\Project\FileSharing\FileSharing.DAL\bin\Debug\log4net.xml
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.DAL.dll
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.DAL.pdb
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entities.dll
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\StructureMap.dll
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\log4net.dll
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\FileSharing.Entities.pdb
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\StructureMap.xml
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\bin\Debug\log4net.xml
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csprojAssemblyReference.cache
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.csproj.CopyComplete
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.dll
+C:\Users\Artsiom_Shabolda\Projects\github\BitW13\ProjectTrainingEPAM\FileSharing\FileSharing.DAL\obj\Debug\FileSharing.DAL.pdb

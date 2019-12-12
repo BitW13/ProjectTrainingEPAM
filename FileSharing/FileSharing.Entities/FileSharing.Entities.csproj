@@ -49,10 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Benefits.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\File.cs" />
+    <Compile Include="Core\FileAccess.cs" />
+    <Compile Include="Core\FileUrl.cs" />
     <Compile Include="Core\User.cs" />
+    <Compile Include="Core\UserClaims.cs" />
+    <Compile Include="Core\UserFriends.cs" />
     <Compile Include="Core\UserRole.cs" />
+    <Compile Include="Core\UsersBenefits.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Models\AccountIndexViewModel.cs" />
     <Compile Include="Models\AddUserByAdminViewModel.cs" />

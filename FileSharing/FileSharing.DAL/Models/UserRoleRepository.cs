@@ -1,20 +1,15 @@
-﻿using FileSharing.DAL.Context;
-using FileSharing.DAL.Interfaces;
+﻿using FileSharing.DAL.Interfaces;
 using FileSharing.Entities.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Models
 {
     public class UserRoleRepository : IRepository<UserRole>
     {
-        private IContext _context;
+        private readonly IContext _context;
 
         public UserRoleRepository(IContext context)
         {
@@ -108,16 +103,11 @@ namespace FileSharing.DAL.Models
             return userRoles[0];
         }
 
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(UserRole item)
         {
             var parameters = new List<SqlParameter>
             {
-                _context.CreateParameter("@Login", item.Name, DbType.String)
+                _context.CreateParameter("@Name", item.Name, DbType.String)
             };
 
             _context.Update("UpdateUserRole", CommandType.StoredProcedure, parameters.ToArray());

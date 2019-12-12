@@ -1,20 +1,15 @@
-﻿using FileSharing.DAL.Context;
-using FileSharing.DAL.Interfaces;
+﻿using FileSharing.DAL.Interfaces;
 using FileSharing.Entities.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Models
 {
     public class FileRepository : IRepository<File>
     {
-        private IContext _context;
+        private readonly IContext _context;
 
         public FileRepository(IContext context)
         {
@@ -29,10 +24,10 @@ namespace FileSharing.DAL.Models
                 _context.CreateParameter("@Size", item.Size, DbType.Double),
                 _context.CreateParameter("@Description", item.Description, DbType.String),
                 _context.CreateParameter("@CategoryId", item.CategoryId, DbType.Int32),
-                _context.CreateParameter("@Url", item.Url, DbType.String),
                 _context.CreateParameter("@Date", item.DownloadDate, DbType.String),
-                _context.CreateParameter("@IsPublic", item.Public, DbType.Boolean),
-                _context.CreateParameter("@UserId", item.UserId, DbType.Int32)
+                _context.CreateParameter("@UserId", item.UserId, DbType.Int32),
+                _context.CreateParameter("@FileAccessId", item.FileAccessId, DbType.Int32),
+                _context.CreateParameter("@FileUrlId", item.FileUrlId, DbType.Int32)
             };
 
             _context.Insert("CreateFile", CommandType.StoredProcedure, parameters.ToArray());
@@ -61,9 +56,9 @@ namespace FileSharing.DAL.Models
                     Size = Convert.ToDouble(row["Size"]),
                     Description = row["Description"].ToString(),
                     CategoryId = Convert.ToInt32(row["CategoryId"]),
-                    Url = row["Url"].ToString(),
+                    FileUrlId = Convert.ToInt32(row["FileUrlId"]),
                     DownloadDate = Convert.ToDateTime(row["Date"]),
-                    Public = Convert.ToBoolean(row["IsPublic"]),
+                    FileAccessId = Convert.ToInt32(row["FileAccessId"]),
                     UserId = Convert.ToInt32(row["UserId"])
                 };
                 files.Add(file);
@@ -100,9 +95,9 @@ namespace FileSharing.DAL.Models
                     Size = Convert.ToDouble(row["Size"]),
                     Description = row["Description"].ToString(),
                     CategoryId = Convert.ToInt32(row["CategoryId"]),
-                    Url = row["Url"].ToString(),
+                    FileUrlId = Convert.ToInt32(row["FileUrlId"]),
                     DownloadDate = Convert.ToDateTime(row["Date"]),
-                    Public = Convert.ToBoolean(row["IsPublic"]),
+                    FileAccessId = Convert.ToInt32(row["FileAccessId"]),
                     UserId = Convert.ToInt32(row["UserId"])
                 };
                 files.Add(file);
@@ -119,10 +114,10 @@ namespace FileSharing.DAL.Models
                 _context.CreateParameter("@Size", item.Size, DbType.Double),
                 _context.CreateParameter("@Description", item.Description, DbType.String),
                 _context.CreateParameter("@CategoryId", item.CategoryId, DbType.Int32),
-                _context.CreateParameter("@Url", item.Url, DbType.String),
                 _context.CreateParameter("@Date", item.DownloadDate, DbType.String),
-                _context.CreateParameter("@IsPublic", item.Public, DbType.Boolean),
-                _context.CreateParameter("@UserId", item.UserId, DbType.Int32)
+                _context.CreateParameter("@UserId", item.UserId, DbType.Int32),
+                _context.CreateParameter("@FileAccessId", item.FileAccessId, DbType.Int32),
+                _context.CreateParameter("@FileUrlId", item.FileUrlId, DbType.Int32)
             };
 
             _context.Update("UpdateFile", CommandType.StoredProcedure, parameters.ToArray());

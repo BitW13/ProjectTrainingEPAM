@@ -1,20 +1,15 @@
-﻿using FileSharing.DAL.Context;
-using FileSharing.DAL.Interfaces;
+﻿using FileSharing.DAL.Interfaces;
 using FileSharing.Entities.Core;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Models
 {
     public class CategoryRepository : IRepository<Category>
     {
-        private IContext _context;
+        private readonly IContext _context;
 
         public CategoryRepository(IContext context)
         {
@@ -45,7 +40,7 @@ namespace FileSharing.DAL.Models
         {
             var categoryDataTable = _context.GetDataTable("GetCategories", CommandType.StoredProcedure);
             var categories = new List<Category>();
-            foreach(DataRow row in categoryDataTable.Rows)
+            foreach (DataRow row in categoryDataTable.Rows)
             {
                 var category = new Category
                 {
@@ -96,7 +91,7 @@ namespace FileSharing.DAL.Models
             var categoriesDataTable = _context.GetDataTable("GetCategoryById", CommandType.StoredProcedure, parameters.ToArray());
 
             var categories = new List<Category>();
-            foreach(DataRow row in categoriesDataTable.Rows)
+            foreach (DataRow row in categoriesDataTable.Rows)
             {
                 var category = new Category
                 {

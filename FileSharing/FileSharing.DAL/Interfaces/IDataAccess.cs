@@ -1,9 +1,4 @@
 ﻿using FileSharing.Entities.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.DAL.Interfaces
 {
@@ -16,5 +11,17 @@ namespace FileSharing.DAL.Interfaces
         IRepository<UserRole> UserRoles { get; set; }
 
         IRepository<User> Users { get; set; }
+
+        IRepository<Benefits> Benefits { get; set; }
+
+        IRepository<FileAccess> FileAccesses { get; set; }
+
+        IRepository<FileUrl> FileUrls { get; set; }
+
+        IRepository<UserClaims> UserClaims { get; set; }
+
+        IRepository<UserFriends> UserFriends { get; set; }
+
+        IRepository<UsersBenefits> UserBenefits { get; set; }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileSharing.Entities.Core
 {
@@ -25,11 +21,9 @@ namespace FileSharing.Entities.Core
 
         public int CategoryId { get; set; }
 
-        [Display(Name = "Общедоступный")]
-        public bool Public { get; set; }
+        public int FileAccessId { get; set; }
 
-        [Display(Name = "Ссылка на скачивание")]
-        public string Url { get; set; }
+        public int FileUrlId { get; set; }
 
         public int UserId { get; set; }
     }

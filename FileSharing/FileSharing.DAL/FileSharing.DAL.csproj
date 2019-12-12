@@ -51,8 +51,14 @@
     <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\BenefitsRepository.cs" />
     <Compile Include="Models\CategoryRepository.cs" />
+    <Compile Include="Models\FileAccessRepository.cs" />
     <Compile Include="Models\FileRepository.cs" />
+    <Compile Include="Models\FileUrlRepository.cs" />
+    <Compile Include="Models\UserBenefitsRepository.cs" />
+    <Compile Include="Models\UserClaimsRepository.cs" />
+    <Compile Include="Models\UserFriendRepository.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Models\UserRoleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
