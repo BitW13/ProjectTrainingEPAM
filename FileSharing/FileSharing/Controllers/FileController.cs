@@ -26,7 +26,7 @@ namespace FileSharing.Controllers
 
         // GET: File
         [HttpGet]
-        public ActionResult Index(int? page, string category, string expansion, string fileName)
+        public ActionResult Index(int? page, string category, string expansion, string fileName, string access)
         {
             var categoryListDb = GetListCategories();
 
@@ -55,6 +55,20 @@ namespace FileSharing.Controllers
             }
 
             ViewBag.Expansions = new SelectList(expansionList);
+
+            var accessListDb = GetListAccesses();
+
+            List<string> accessList = new List<string>
+            {
+                "Выбрать доступ к файлу"
+            };
+
+            foreach(var dbAccess in accessListDb)
+            {
+                accessList.Add(dbAccess);
+            }
+
+            ViewBag.Accesses = new SelectList(accessList);
 
             int pageNumber = (page ?? 1);
             var files = _bl.Files.GetAll();
@@ -101,7 +115,7 @@ namespace FileSharing.Controllers
                 {
                     Id = file.Id,
                     UserId = file.UserId,
-                    IsPublic = file.Public,
+                    FileAccessId = file.FileAccessId,
                     Name = file.Name,
                     UserLogin = user.Login,
                     Description = file.Description,
@@ -111,6 +125,20 @@ namespace FileSharing.Controllers
             }
 
             return View(models.ToPagedList(pageNumber, PAGE_SIZE));
+        }
+
+        private List<string> GetListAccesses()
+        {
+            var accesses = _bl.FileAccesses.GetAll();
+
+            var list = new List<string>();
+
+            foreach(var access in accesses)
+            {
+                list.Add(access.Name);
+            }
+
+            return list;
         }
 
         private List<string> GetListExpansions()
@@ -173,7 +201,6 @@ namespace FileSharing.Controllers
                 {
                     UserId = Convert.ToInt32(HttpContext.Request.Cookies["Id"].Value),
                     Name = fileName,
-                    Public = file.IsPublic,
                     Description = file.Description,
                     DownloadDate = DateTime.Now
                 };
@@ -194,11 +221,11 @@ namespace FileSharing.Controllers
 
                 fileModel.Size = Math.Round(((double)size) / 1048576, 2);
 
-                fileModel.Url = "~/App_Data/" + fileName;
+                //fileModel.Url = "~/App_Data/" + fileName;
 
                 _bl.Files.Create(fileModel);
 
-                upload.SaveAs(Server.MapPath(fileModel.Url));
+                //upload.SaveAs(Server.MapPath(fileModel.Url));
 
                 return RedirectToAction("ListOfUserFiles");
             }
@@ -211,122 +238,122 @@ namespace FileSharing.Controllers
 
         #endregion
 
-        public ActionResult Download(int? id)
-        {
-            if(id == null)
-            {
-                return RedirectToAction("Index");
-            }
+        //public ActionResult Download(int? id)
+        //{
+        //    if(id == null)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
 
-            var file = _bl.Files.GetItemById(id);
+        //    var file = _bl.Files.GetItemById(id);
 
-            if(file == null)
-            {
-                Logger.Log.Error("Download - file not found");
-                return HttpNotFound();
-            }
+        //    if(file == null)
+        //    {
+        //        Logger.Log.Error("Download - file not found");
+        //        return HttpNotFound();
+        //    }
 
-            string[] splitFullName = (file.Name).Split('.');
+        //    string[] splitFullName = (file.Name).Split('.');
 
-            string typeFile = "application/" + splitFullName[splitFullName.Length - 1];
-            return File(Server.MapPath(file.Url), typeFile, file.Name);
-        }
+        //    string typeFile = "application/" + splitFullName[splitFullName.Length - 1];
+        //    return File(Server.MapPath(file.Url), typeFile, file.Name);
+        //}
 
-        [Auth]
-        public ActionResult ListOfUserFiles(int? id)
-        {
-            var files = _bl.Files.GetAll();
+        //[Auth]
+        //public ActionResult ListOfUserFiles(int? id)
+        //{
+        //    var files = _bl.Files.GetAll();
 
-            if(id == null)
-            {
-                id = Convert.ToInt32(HttpContext.Request.Cookies["Id"].Value);
-            }
+        //    if(id == null)
+        //    {
+        //        id = Convert.ToInt32(HttpContext.Request.Cookies["Id"].Value);
+        //    }
 
-            files = files.Where(m => m.UserId == id);
+        //    files = files.Where(m => m.UserId == id);
 
-            if (Request.Cookies["Admin"] == null && Request.Cookies["Moder"] == null && Request.Cookies["Id"].Value != id.ToString())
-            {
-                files = files.Where(m => m.Public == true);
-            }            
+        //    if (Request.Cookies["Admin"] == null && Request.Cookies["Moder"] == null && Request.Cookies["Id"].Value != id.ToString())
+        //    {
+        //        files = files.Where(m => m.Public == true);
+        //    }            
 
-            return View(files);
-        }
+        //    return View(files);
+        //}
 
-        [Auth]
-        [HttpGet]
-        public ActionResult EditFile(int? id)
-        {
-            ViewBag.Categories = new SelectList(GetListCategories());
+        //[Auth]
+        //[HttpGet]
+        //public ActionResult EditFile(int? id)
+        //{
+        //    ViewBag.Categories = new SelectList(GetListCategories());
 
-            var file = _bl.Files.GetItemById(id);
+        //    var file = _bl.Files.GetItemById(id);
 
-            if(file == null)
-            {
-                Logger.Log.Error("EditFile - file not found");
+        //    if(file == null)
+        //    {
+        //        Logger.Log.Error("EditFile - file not found");
 
-                return HttpNotFound();
-            }
+        //        return HttpNotFound();
+        //    }
 
-            var category = _bl.Categories.GetItemById(file.CategoryId);
+        //    var category = _bl.Categories.GetItemById(file.CategoryId);
 
-            var model = new EditFileViewModel()
-            {
-                Id = file.Id,
-                Name = file.Name,
-                Category = category.Name,
-                Description = file.Description,
-                IsPublic = file.Public
-            };
+        //    var model = new EditFileViewModel()
+        //    {
+        //        Id = file.Id,
+        //        Name = file.Name,
+        //        Category = category.Name,
+        //        Description = file.Description,
+        //        IsPublic = file.Public
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
-        [Auth]
-        [HttpPost]
-        public ActionResult EditFile(EditFileViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var file = _bl.Files.GetItemById(model.Id);
+        //[Auth]
+        //[HttpPost]
+        //public ActionResult EditFile(EditFileViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var file = _bl.Files.GetItemById(model.Id);
 
-                if (file == null)
-                {
-                    Logger.Log.Error("EditFile - file not found");
+        //        if (file == null)
+        //        {
+        //            Logger.Log.Error("EditFile - file not found");
 
-                    return HttpNotFound();
-                }
+        //            return HttpNotFound();
+        //        }
 
-                var category = _bl.Categories.GetElement(new Category { Name = model.Category });
+        //        var category = _bl.Categories.GetElement(new Category { Name = model.Category });
 
-                file.CategoryId = category.Id;
-                file.Description = model.Description;
-                file.Public = model.IsPublic;
+        //        file.CategoryId = category.Id;
+        //        file.Description = model.Description;
+        //        file.Public = model.IsPublic;
 
-                _bl.Files.Update(file);
+        //        _bl.Files.Update(file);
 
-                return RedirectToAction("Index");
-            }
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
-        [Auth]
-        public ActionResult DeleteFile(int? id)
-        {
-            var file = _bl.Files.GetItemById(id);
+        //[Auth]
+        //public ActionResult DeleteFile(int? id)
+        //{
+        //    var file = _bl.Files.GetItemById(id);
 
-            if(file == null)
-            {
-                Logger.Log.Error("DeleteFile - file not found");
+        //    if(file == null)
+        //    {
+        //        Logger.Log.Error("DeleteFile - file not found");
 
-                return HttpNotFound();
-            }
+        //        return HttpNotFound();
+        //    }
 
-            System.IO.File.Delete(Server.MapPath(file.Url));
+        //    System.IO.File.Delete(Server.MapPath(file.Url));
 
-            _bl.Files.Delete(file);
+        //    _bl.Files.Delete(file);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

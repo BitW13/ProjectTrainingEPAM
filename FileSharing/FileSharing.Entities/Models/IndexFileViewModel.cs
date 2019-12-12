@@ -22,6 +22,6 @@ namespace FileSharing.Entities.Models
 
         public int UserId { get; set; }
 
-        public bool IsPublic { get; set; }
+        public int FileAccessId { get; set; }
     }
 }

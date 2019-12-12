@@ -56,7 +56,10 @@
     <Compile Include="Services\FileAccessService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\FileUrlService.cs" />
+    <Compile Include="Services\UserClaimsService.cs" />
+    <Compile Include="Services\UserFriendsService.cs" />
     <Compile Include="Services\UserRoleService.cs" />
+    <Compile Include="Services\UsersBenefitsService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
