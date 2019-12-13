@@ -22,7 +22,7 @@ namespace FileSharing.Entities.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        [Display(Name = "Сделать его открытым для скачивания")]
-        public bool IsPublic { get; set; }
+        [Display(Name = "Доступ к файлу")]
+        public string Access { get; set; }
     }
 }

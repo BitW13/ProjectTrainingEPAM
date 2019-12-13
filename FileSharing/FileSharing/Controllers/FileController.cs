@@ -238,122 +238,143 @@ namespace FileSharing.Controllers
 
         #endregion
 
-        //public ActionResult Download(int? id)
-        //{
-        //    if(id == null)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
+        public ActionResult Download(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
 
-        //    var file = _bl.Files.GetItemById(id);
+            var file = _bl.Files.GetItemById(id);            
 
-        //    if(file == null)
-        //    {
-        //        Logger.Log.Error("Download - file not found");
-        //        return HttpNotFound();
-        //    }
+            if (file == null)
+            {
+                Logger.Log.Error("Download - file not found");
+                return HttpNotFound();
+            }
 
-        //    string[] splitFullName = (file.Name).Split('.');
+            var fileUrl = _bl.FileUrls.GetItemById(file.FileUrlId);
 
-        //    string typeFile = "application/" + splitFullName[splitFullName.Length - 1];
-        //    return File(Server.MapPath(file.Url), typeFile, file.Name);
-        //}
+            string[] splitFullName = (file.Name).Split('.');
 
-        //[Auth]
-        //public ActionResult ListOfUserFiles(int? id)
-        //{
-        //    var files = _bl.Files.GetAll();
+            string typeFile = "application/" + splitFullName[splitFullName.Length - 1];
+            return File(Server.MapPath(fileUrl.Url), typeFile, file.Name);
+        }
 
-        //    if(id == null)
-        //    {
-        //        id = Convert.ToInt32(HttpContext.Request.Cookies["Id"].Value);
-        //    }
+        [Auth]
+        public ActionResult ListOfUserFiles(int? id)
+        {
+            var files = _bl.Files.GetAll();
 
-        //    files = files.Where(m => m.UserId == id);
+            if (id == null)
+            {
+                id = Convert.ToInt32(HttpContext.Request.Cookies["Id"].Value);
+            }
 
-        //    if (Request.Cookies["Admin"] == null && Request.Cookies["Moder"] == null && Request.Cookies["Id"].Value != id.ToString())
-        //    {
-        //        files = files.Where(m => m.Public == true);
-        //    }            
+            var fileAccess = _bl.FileAccesses.GetAll().Where(x => x.Name == "Общедоступный").FirstOrDefault();
 
-        //    return View(files);
-        //}
+            files = files.Where(m => m.UserId == id);
 
-        //[Auth]
-        //[HttpGet]
-        //public ActionResult EditFile(int? id)
-        //{
-        //    ViewBag.Categories = new SelectList(GetListCategories());
+            if (Request.Cookies["Admin"] == null && Request.Cookies["Moder"] == null && Request.Cookies["Id"].Value != id.ToString())
+            {
+                files = files.Where(m => m.FileAccessId == fileAccess.Id);
+            }
 
-        //    var file = _bl.Files.GetItemById(id);
+            return View(files);
+        }
 
-        //    if(file == null)
-        //    {
-        //        Logger.Log.Error("EditFile - file not found");
+        [Auth]
+        [HttpGet]
+        public ActionResult EditFile(int? id)
+        {
+            ViewBag.Categories = new SelectList(GetListCategories());
 
-        //        return HttpNotFound();
-        //    }
+            var file = _bl.Files.GetItemById(id);
 
-        //    var category = _bl.Categories.GetItemById(file.CategoryId);
+            if (file == null)
+            {
+                Logger.Log.Error("EditFile - file not found");
 
-        //    var model = new EditFileViewModel()
-        //    {
-        //        Id = file.Id,
-        //        Name = file.Name,
-        //        Category = category.Name,
-        //        Description = file.Description,
-        //        IsPublic = file.Public
-        //    };
+                return HttpNotFound();
+            }
 
-        //    return View(model);
-        //}
+            var fileAccesses = _bl.FileAccesses.GetAll();
 
-        //[Auth]
-        //[HttpPost]
-        //public ActionResult EditFile(EditFileViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var file = _bl.Files.GetItemById(model.Id);
+            ViewBag.FileAccesses = fileAccesses;
 
-        //        if (file == null)
-        //        {
-        //            Logger.Log.Error("EditFile - file not found");
+            var fileAccess = fileAccesses.Where(x => x.Id == file.FileAccessId).FirstOrDefault();
 
-        //            return HttpNotFound();
-        //        }
+            var category = _bl.Categories.GetItemById(file.CategoryId);
 
-        //        var category = _bl.Categories.GetElement(new Category { Name = model.Category });
+            var model = new EditFileViewModel()
+            {
+                Id = file.Id,
+                Name = file.Name,
+                Category = category.Name,
+                Description = file.Description,
+                Access = fileAccess.Name
+            };
 
-        //        file.CategoryId = category.Id;
-        //        file.Description = model.Description;
-        //        file.Public = model.IsPublic;
+            return View(model);
+        }
 
-        //        _bl.Files.Update(file);
+        [Auth]
+        [HttpPost]
+        public ActionResult EditFile(EditFileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var file = _bl.Files.GetItemById(model.Id);
 
-        //        return RedirectToAction("Index");
-        //    }
+                if (file == null)
+                {
+                    Logger.Log.Error("EditFile - file not found");
 
-        //    return View(model);
-        //}
+                    return HttpNotFound();
+                }
 
-        //[Auth]
-        //public ActionResult DeleteFile(int? id)
-        //{
-        //    var file = _bl.Files.GetItemById(id);
+                var category = _bl.Categories.GetElement(new Category { Name = model.Category });
 
-        //    if(file == null)
-        //    {
-        //        Logger.Log.Error("DeleteFile - file not found");
+                var fileAccess = _bl.FileAccesses.GetAll().Where(x => x.Name == model.Name).FirstOrDefault();
 
-        //        return HttpNotFound();
-        //    }
+                file.CategoryId = category.Id;
+                file.Description = model.Description;
+                file.FileAccessId = fileAccess.Id;
 
-        //    System.IO.File.Delete(Server.MapPath(file.Url));
+                _bl.Files.Update(file);
 
-        //    _bl.Files.Delete(file);
+                return RedirectToAction("Index");
+            }
 
-        //    return RedirectToAction("Index");
-        //}
+            return View(model);
+        }
+
+        [Auth]
+        public ActionResult DeleteFile(int? id)
+        {
+            var file = _bl.Files.GetItemById(id);
+
+            if (file == null)
+            {
+                Logger.Log.Error("DeleteFile - file is not found");
+
+                return HttpNotFound();
+            }
+
+            var fileUrl = _bl.FileAccesses.GetItemById(file.FileUrlId);
+
+            if(fileUrl == null)
+            {
+                Logger.Log.Error("DeleteFile - fileAccess is not found");
+
+                return HttpNotFound();
+            }
+
+            System.IO.File.Delete(Server.MapPath(fileUrl.Name));
+
+            _bl.Files.Delete(file);
+
+            return RedirectToAction("Index");
+        }
     }
 }
